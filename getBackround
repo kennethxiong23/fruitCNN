@@ -1,0 +1,19 @@
+import cv2
+from time import sleep
+
+cap = cv2.VideoCapture(0)
+
+if not cap.isOpened():
+    print("Camera failed to open.")
+    raise SystemError
+else:
+    print("Camera ready for pictures.")
+
+sleep(1)
+
+for i in range(2000):
+    _, frame = cap.read()
+    cv2.imwrite(f'images/background/img_{i}.jpg', frame)
+    print(i)
+
+print("Done!")
